@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: MarcheRepository::class)]
+#[Vich\Uploadable]
 class Marche
 {
     #[ORM\Id]
@@ -16,7 +19,6 @@ class Marche
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $idMarche = null;
 
@@ -34,6 +36,9 @@ class Marche
 
     #[ORM\Column(length: 40)]
     private ?string $telephone = null;
+
+    #[Vich\UploadableField(mapping: 'imageMarches', fileNameProperty: 'image')]
+    private ?File $imageFile = null;
 
     #[ORM\Column(length: 170)]
     private ?string $image = null;
@@ -125,6 +130,16 @@ class Marche
         $this->telephone = $telephone;
 
         return $this;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 
     public function getImage(): ?string

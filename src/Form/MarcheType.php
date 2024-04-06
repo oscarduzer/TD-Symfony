@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class MarcheType extends AbstractType
 {
@@ -75,11 +76,12 @@ class MarcheType extends AbstractType
                     'id'=>'capacite'
                 ]
             ])
-            ->add('image',TextType::class,
+            ->add('imageFile',VichImageType::class,
             [
                 'attr'=>[
                     'class'=>'form-control rounded-0',
-                    'id'=>'image'
+                    'id'=>'image',
+                    'placeholder'=>'Choisir une image'
                 ]
             ])
             ->add('idVille', EntityType::class, [
