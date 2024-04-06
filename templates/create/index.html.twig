@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marche index{% endblock %}
+
+{% block body %}
+    <h1>Marche index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>IdMarche</th>
+                <th>NomMarche</th>
+                <th>Description</th>
+                <th>Capacite</th>
+                <th>Adresse</th>
+                <th>Telephone</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for marche in marches %}
+            <tr>
+                <td>{{ marche.id }}</td>
+                <td>{{ marche.idMarche }}</td>
+                <td>{{ marche.nomMarche }}</td>
+                <td>{{ marche.description }}</td>
+                <td>{{ marche.capacite }}</td>
+                <td>{{ marche.adresse }}</td>
+                <td>{{ marche.telephone }}</td>
+                <td>{{ marche.image }}</td>
+                <td>
+                    <a href="{{ path('app_create_show', {'id': marche.id}) }}">show</a>
+                    <a href="{{ path('app_create_edit', {'id': marche.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_create_new') }}">Create new</a>
+{% endblock %}

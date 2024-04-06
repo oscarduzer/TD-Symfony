@@ -1,3 +1,4 @@
-body {
-    background-color: skyblue;
+
+input,textarea,select{
+    box-shadow: none !important;
 }

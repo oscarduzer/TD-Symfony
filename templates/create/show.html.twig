@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marche{% endblock %}
+
+{% block body %}
+    <h1>Marche</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ marche.id }}</td>
+            </tr>
+            <tr>
+                <th>IdMarche</th>
+                <td>{{ marche.idMarche }}</td>
+            </tr>
+            <tr>
+                <th>NomMarche</th>
+                <td>{{ marche.nomMarche }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ marche.description }}</td>
+            </tr>
+            <tr>
+                <th>Capacite</th>
+                <td>{{ marche.capacite }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ marche.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ marche.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ marche.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_create_index') }}">back to list</a>
+
+    <a href="{{ path('app_create_edit', {'id': marche.id}) }}">edit</a>
+
+    {{ include('create/_delete_form.html.twig') }}
+{% endblock %}
